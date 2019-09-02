@@ -1,0 +1,21 @@
+{
+  "name": "natural_love",
+  "version": "1.0.0",
+  "description": "proyecto inicial",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "build": "next build",
+    "dev": "nodemon src"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "web-push": "^3.3.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}

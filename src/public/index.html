@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="author" content="eliasrm12">
+	<meta name="theme-color" content="#037732">
+	<meta property="og:image" content="img/icons/icon-512.png">
+	<link rel="apple-touch-icon" href="img//icons/icon-192.png">
+	<link rel="shortcut icon" href="img/natural-love.ico">
+	<link rel="manifest" href="naturallove.webmanifest">
+	<title>Natural Love</title>
+	<link rel="stylesheet" href="bridge.css">
+</head>
+<body>
+	<div id="app">
+		<header>
+			<img src="img/logo.svg" alt="logo" id="logo">
+			
+			<nav>
+				<ul>
+					<li><a href="#/">Home</a></li>
+					<li><a href="#/galery" id="gal" data-url="js/script.js">Gallery</a></li>
+					<li><a href="#/blog">Blog</a></li>
+				</ul>
+			</nav>
+
+			<div id='installer'>
+				<button class='button' id="install">Install</button>
+				<button id="notifications" class='button available'>Notifications</button>
+			</div>
+		</header>
+		<section id="home">
+			<div id="welcome">
+				<img src="img/bg.svg" alt="Imagen">
+				<svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 255 255" version="1.1" x="0px" y="0px">
+				    <g>
+				       	<clipPath id="figure">
+				          <path class="st0" d="M239.8,153.7c4.1,18.5,4.1,34.8,4.1,34.8s-14.4-2-20.5,2.1c-4.5,3-20.1,8.2-30.5,8.3c0-0.3-0.1-0.7-0.1-1.1
+				          	c0,0.4,0.1,0.7,0.1,1.1c1,10.6-4.4,14.2-4.4,14.2s-16.4,24.6-14.3,32.8c-10.2-6.1-22.5-8.2-34.9-6.1c-10.2,1.7-23.3,2-28.5-12.1
+				          	c-3.3,2.7-7,4.5-10.4,3.9c-10.2-2.1-36.9,2-36.9,2s-2-8.2-12.3-32.8c0-2.6,0.1-5,0.3-7.2c0.2-2.1,0.4-4,0.7-5.7
+				          	c-0.3,1.8-0.6,3.7-0.7,5.7C31,196.8,2,166,2,166s6.2-16.4,6.2-34.8c8.5-13.6,21.2-17.3,25.3-18.2c-3.8-16.1-13-26.9-13-26.9
+				          	s-4.1-10.2-2-12.3c2-2,22.5-12.3,28.7-18.4c1.8-1.8,6-3.2,11.2-4.1c0.1-3.5,1.3-8.2,5.2-14.4C73.8,20.5,79.9,16.4,84,2
+				          	c8.2,6.2,18.5,6.2,18.5,6.2s22.7,1.6,32.1,16.4c6.8-4.7,15.3-8.2,27.4-8.2c18.4,0,41,0,41,0s1.6,34.6,3.3,48.7
+				          	c1.7-0.6,3.6-0.9,5.9-0.5c14.3,2,29.7,13.3,29.7,13.3s-6.1,15.2-9.1,31.2c-0.3-0.2-0.7-0.4-1-0.6c0.4,0.2,0.7,0.5,1,0.7v0
+				          	c10.8,6.8,14.9,5.8,15.2,5.7c-0.4,0.4-9.1,9.1-20,20C232.3,138,237.6,143.7,239.8,153.7z"/>
+				       </clipPath>
+				    </g> 
+				    <image id="img1" clip-path="url(#figure)" width="100%" height="100%" xlink:href="img/img1.jpg" /> 
+				</svg>
+
+			</div>
+		</section>
+
+		<div id="view"></div>
+		<section id="history">
+			<h2>History</h2>
+			<div id="coment">
+				<div id="text">
+					<div id="silvia"></div>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy  </p>
+					<p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
+Ut wisi enim ad minim </p>
+				</div>
+				<div id="cactus"></div>
+			</div>
+		</section>
+
+		<section id="contact">
+			<h2>Contact</h2>
+			<div id="boxs">
+				<div class="social">
+					<div class="logo"></div>
+				</div>
+				<div class="social">
+					<div class="logo"></div>
+				</div>
+				<div class="social">
+					<div class="logo"></div>
+				</div>
+				<div class="social">
+					<div class="logo"></div>
+				</div>
+			</div>
+		</section>
+		
+		<footer><p>COPYRIGHT © Natural Love. TODOS LOS DERECHOS RESERVADOS.</p></footer>
+	</div>
+	
+
+	 <script src="js/app.js"></script>
+	  <!--<script src="script.js"></script> Sola para probar push-->
+	<script src="js/spa.js"></script>
+	<script src="js/routes.js"></script>
+	<script src="js/controllers/blog.js"></script> 
+
+	<script>
+
+		const notify = document.getElementById('notifications');
+
+		if (Notification.permission == 'granted') {
+			console.log('estoy por defecto');
+			notify.classList.remove('available');
+		}else{
+			notify.classList.add('available');
+		}
+
+		
+
+		const Installer = function(root) {
+			let promptEvent;
+
+			const install = function(e) {
+				if(promptEvent) {
+				promptEvent.prompt();
+				promptEvent.userChoice
+					.then(function(choiceResult) {
+					// The user actioned the prompt (good or bad).
+					// good is handled in
+					promptEvent = null;
+					root.classList.remove('available');
+					})
+					.catch(function(installError) {
+					// Boo. update the UI.
+					promptEvent = null;
+					root.classList.remove('available');
+					});
+				}
+			};
+
+			const installed = function(e) {
+				promptEvent = null;
+				// This fires after onbeforinstallprompt OR after manual add to homescreen.
+				root.classList.remove('available');
+			};
+
+			const beforeinstallprompt = function(e) {
+				promptEvent = e;
+				promptEvent.preventDefault();
+				root.classList.add('available');
+				return false;
+			};
+
+			window.addEventListener('beforeinstallprompt', beforeinstallprompt);
+			window.addEventListener('appinstalled', installed);
+
+			root.addEventListener('click', install.bind(this));
+			root.addEventListener('touchend', install.bind(this));
+		};
+
+		window.addEventListener('load', function() {
+		const installEl = document.getElementById('install');
+		const installer = new Installer(installEl);
+
+
+		
+		});
+	
+	</script>
+		
+
+	<script>
+		/*
+		if (!('serviceWorker' in navigator)) {
+		// Service Worker isn't supported on this browser, disable or hide UI.
+		return;
+		}
+
+		if (!('PushManager' in window)) {
+		// Push isn't supported on this browser, disable or hide UI.
+		return;
+		}
+*/
+	</script>
+	
+</body>
+</html>

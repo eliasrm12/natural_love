@@ -1,0 +1,79 @@
+
+/*----------------------------Media Query------------------------*/
+
+/*
+-------------------------------
+General iPhone 4
+-------------------------------
+*/
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 812px) {
+
+	
+}
+
+
+/*
+-------------------------------
+Vetical
+-------------------------------
+*/
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 812px)
+  and (orientation: portrait) {
+
+}
+
+
+
+/*
+-------------------------------
+Horizontal
+-------------------------------
+*/
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 812px)
+  and (orientation: landscape) {
+
+  	#galery .prod{
+		flex-direction: row;
+	}
+
+	#galery .iz{
+		justify-content: flex-start;
+	}
+
+  	#galery .prod .con1{
+		width: 50%;
+	}
+
+  	#galery .prod .con1:before{
+		width: 0;
+		height: 100%;
+		border-right: 15px dotted #deebe1;
+		border-bottom: none;
+		right: -7px;
+	}
+
+	#galery .prod .info{
+		width: 50%;
+		min-height: 100%;
+		transform-origin: right;
+		position: absolute;
+		transition: 1.5s;
+		transform: perspective(600px) rotateY(0deg);
+
+	}
+
+	#galery .prod .infomas{
+		transition: 1.5s;
+		transform: perspective(600px) rotateY(180deg);
+	}
+
+}
+
+/*-------------------Animations---------------------*/
+
