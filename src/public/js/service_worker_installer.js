@@ -35,7 +35,9 @@ async function send() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(subscription)
-      });
+      }).then(res => res.json())
+      .catch(error => console.error('Error:', error))
+      .then(response => console.log('Success:', response));
       console.log("Push Registered...");
 
       if (Notification.permission == 'granted') {

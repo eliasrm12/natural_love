@@ -69,6 +69,7 @@ app.post('/save_subscription', function (req, res) {
   
       res.setHeader('Content-Type', 'application/json');
       res.send(JSON.stringify({ data: { success: true } }));
+      res.sendStatus(200);
       
     }else{
   
@@ -94,6 +95,7 @@ app.post('/save_subscription', function (req, res) {
         console.log('Se sebscribio');
         res.setHeader('Content-Type', 'application/json');
         res.send(JSON.stringify({ data: { success: true } }));
+        res.sendStatus(200);
       }
   
     }
@@ -111,6 +113,7 @@ webpush.setVapidDetails(
   app.post('/newpost', (req, res) => {
     // Send 201 - resource created
     res.sendStatus(201);
+    
     
     let promiseChain = Promise.resolve();
     
