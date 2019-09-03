@@ -38,19 +38,19 @@ Horizontal
   and (max-device-width: 812px)
   and (orientation: landscape) {
 
-  	#galery .prod{
+  	#gallery .prod{
 		flex-direction: row;
 	}
 
-	#galery .iz{
+	#gallery .iz{
 		justify-content: flex-start;
 	}
 
-  	#galery .prod .con1{
+  	#gallery .prod .con1{
 		width: 50%;
 	}
 
-  	#galery .prod .con1:before{
+  	#gallery .prod .con1:before{
 		width: 0;
 		height: 100%;
 		border-right: 15px dotted #deebe1;
@@ -58,7 +58,7 @@ Horizontal
 		right: -7px;
 	}
 
-	#galery .prod .info{
+	#gallery .prod .info{
 		width: 50%;
 		min-height: 100%;
 		transform-origin: right;
@@ -68,7 +68,7 @@ Horizontal
 
 	}
 
-	#galery .prod .infomas{
+	#gallery .prod .infomas{
 		transition: 1.5s;
 		transform: perspective(600px) rotateY(180deg);
 	}

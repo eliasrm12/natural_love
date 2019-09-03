@@ -1,18 +1,14 @@
 (function (window , document) {
 	
 	spa.getId('view').router()
-		.route('/','/views/home.html', null, null)
-		.route('/galery','/views/galery/galery.html', null, function(){
+		.route('/','views/home.html', null, null)
+		.route('/gallery','views/gallery.html', null, function(){
 			createProducts();
 		})
-		.route('/blog', '/views/blog/blog.html', 'blog', function(){
+		.route('/blog', 'views/blog.html', 'blog', function(){
 			//spa.getCurrentControl().loadPost();
 			createProducts();
-		})
-		.route('/create', '/views/blog/create.html', 'blog', function(){
-			spa.getId('createpost');
-		})
-		.route('/update', '/views/blog/update.html', null, null);
+		});
 
 })(window,document);
 

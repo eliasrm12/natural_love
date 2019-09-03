@@ -21,7 +21,7 @@
 			<nav>
 				<ul>
 					<li><a href="#/">Home</a></li>
-					<li><a href="#/galery" id="gal" data-url="js/script.js">Gallery</a></li>
+					<li><a href="#/gallery">Gallery</a></li>
 					<li><a href="#/blog">Blog</a></li>
 				</ul>
 			</nav>
@@ -89,11 +89,10 @@ Ut wisi enim ad minim </p>
 	</div>
 	
 
-	 <script src="js/app.js"></script>
-	  <!--<script src="script.js"></script> Sola para probar push-->
+	 <!----> <script src="js/service_worker_installer.js"></script>
 	<script src="js/spa.js"></script>
 	<script src="js/routes.js"></script>
-	<script src="js/controllers/blog.js"></script> 
+	<script src="js/controllers/blog.js"></script>
 
 	<script>
 
@@ -161,17 +160,51 @@ Ut wisi enim ad minim </p>
 		
 
 	<script>
-		/*
-		if (!('serviceWorker' in navigator)) {
-		// Service Worker isn't supported on this browser, disable or hide UI.
-		return;
-		}
+/*
+		let link_1 = document.querySelector('li:nth-child(1) a');
+		let link_2 = document.querySelector('li:nth-child(2) a');
+		let link_3 = document.querySelector('li:nth-child(3) a');
 
-		if (!('PushManager' in window)) {
-		// Push isn't supported on this browser, disable or hide UI.
-		return;
-		}
-*/
+		link_1.addEventListener('click', function(e){
+			e.preventDefault();
+			router('views/home.html');
+
+			window.history.pushState('sec_home', "", "views/home.html");
+		});
+
+		link_2.addEventListener('click', function(e){
+			e.preventDefault();
+			router('views/gallery.html');
+			window.history.pushState('gallery', "", "gallery");
+		});
+
+		link_3.addEventListener('click', function(e){
+			e.preventDefault();
+			router('views/blog.html');
+			window.history.pushState('blog', "", "blog");
+		});
+
+		window.addEventListener('beforeunload', function(e){
+			history.replaceState('home','','views/gallery.html');
+			e.preventDefault();
+		});
+
+
+		function router(route){
+			let href = window.location.origin + window.location.pathname;
+			href = route;
+			let frame = document.querySelector('#view');
+
+			let myHeaders = new Headers({'Content-Type' : 'text/html'});
+			fetch(href,{ mode: 'no-cors', method: 'get', headers: myHeaders })
+			.then(response => { 
+				response.text().then(text => { 
+					frame.innerHTML = text;
+					console.log(text); 
+				}) 
+			})
+			.catch(err => { console.log(err) });
+		}*/
 	</script>
 	
 </body>

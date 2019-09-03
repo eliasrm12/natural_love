@@ -13,9 +13,7 @@ if ("serviceWorker" in navigator) {
 async function send() {
   // Register Service Worker
   console.log("Registering service worker...");
-  const register = await navigator.serviceWorker.register(href + "sw.js",{
-    scope: '/'
-});
+  const register = await navigator.serviceWorker.register(href + "sw.js");
   console.log("Service Worker Registered...");
 
   if ('Notification' in window) {
@@ -31,7 +29,7 @@ async function send() {
         applicationServerKey: urlBase64ToUint8Array(publicVapidKey)
       });
 
-      await fetch('save_subscription', {
+      await fetch('/save_subscription', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

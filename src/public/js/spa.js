@@ -19,72 +19,61 @@ Se crea una funcion auto invocada
 					return this;
 				},
 
-				get : function(id){
-					return element = document.getElementById(id);
+				getCurrentControl : function(){
+					return currentControl;
 				},
 
-			notSubmit : function () {
-				element.addEventListener('submit',function(e) {
-					e.preventDefault();
-				}, false);
-				return this;
-			},
+				controller : function(name,control){
+					controllers[name] = {'controller' : control};
+				},
 
-			getCurrentControl : function(){
-				return currentControl;
-			},
+				router : function () {
+					frame = element;
+					return this;
+				},
 
-			controller : function(name,control){
-				controllers[name] = {'controller' : control};
-			},
+				route : function (route,template,controller,action) {
+					routes[route] = {
+						'template' : template,
+						'controller' : controller,
+						'action' : action //Esta accion se carga una vez
+											// sehaya cagado la vista
+					};
+					return this;
+				},
 
-			router : function () {
-				frame = element;
-				return this;
-			},
+				routesHandler : function () {
+					let index = window.location.href.substring().lastIndexOf('/');
+					let hash = window.location.href.substring(index), 
 
-			route : function (route,template,controller,action) {
-				routes[route] = {
-					'template' : template,
-					'controller' : controller,
-					'action' : action //Esta accion se carga una vez
-										// sehaya cagado la vista
-				};
-				return this;
-			},
+					source = routes[hash];
 
-			routesHandler : function () {
-				let index = window.location.href.substring().lastIndexOf('/');
-				let hash = window.location.href.substring(index), 
+					if (source && source.template) {
 
-				source = routes[hash];
+						if (source.controller) {
+							currentControl = controllers[source.controller].controller;
+						}
 
-				if (source && source.template) {
 
-					if (source.controller) {
-						currentControl = controllers[source.controller].controller;
+						let href = window.location.origin + window.location.pathname;
+						href =source.template;
+
+						let myHeaders = new Headers({'Content-Type' : 'text/html'});
+						fetch(href,{ mode: 'no-cors', method: 'get', headers: myHeaders })
+						.then(response => { response.text().then(text => { 
+							frame.innerHTML = text; 
+
+								if (typeof(source.action)==='function') {
+									source.action();
+								}
+
+						}) })
+						.catch(err => { console.log(err) });
+
+					}else{
+						window.location.hash = '/'; // Crear pagina 404
 					}
-
-
-					let href = window.location.origin + window.location.pathname;
-					href = href+source.template;
-
-					let myHeaders = new Headers({'Content-Type' : 'text/html'});
-					fetch(href,{ mode: 'no-cors', method: 'get', headers: myHeaders })
-					.then(response => { response.text().then(text => { 
-						frame.innerHTML = text; 
-
-							if (typeof(source.action)==='function') {
-								source.action();
-							}
-
-					}) })
-					.catch(err => { console.log(err) });
-
-				}else{
-					window.location.hash = '/'; // Crear pagina 404
 				}
-			}
 
 		 	};
 		return spa;
@@ -100,8 +89,3 @@ Se crea una funcion auto invocada
 	}
 
 })(window,document);
-
-links = document.querySelectorAll("a");
-links.forEach(el => {
-	el.preventDefault;
-});

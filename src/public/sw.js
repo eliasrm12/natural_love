@@ -8,7 +8,7 @@ var contentToCache = [
   './naturallove.webmanifest',
   './js/routes.js',
   './js/spa.js',
-  './js/app.js',
+  './js/service_worker_installer.js',
   './js/info.json',
   './bridge.css',
   './css/reset.css',
@@ -26,10 +26,8 @@ var contentToCache = [
   './img/sil.jpg',
   './img/bg.svg',
   './img/placeholder.png',
-  './views/blog/blog.html',
-  './views/blog/create.html',
-  './views/blog/update.html',
-  './views/galery/galery.html',
+  './views/blog.html',
+  './views/gallery.html',
   './views/home.html'
 ];
 
@@ -74,6 +72,7 @@ self.addEventListener('fetch', function(e) {
       return r || fetch(e.request).then(function(response) {
         return caches.open(myCache).then(function(cache) {
           console.log('[Service Worker] Caching new resource: '+e.request.url);
+          console.log(e.request);
           cache.put(e.request, response.clone());
           return response;
         });
